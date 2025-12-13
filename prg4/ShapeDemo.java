@@ -1,75 +1,65 @@
-import java.util.Scanner;
+abstract class Shape {
 
+    int dim1, dim2;
 
-class InputScanner {
-    Scanner sc = new Scanner(System.in);
+    // Abstract method
+    abstract void printArea();
 }
 
-
-abstract class Shape extends InputScanner {
-    int a, b; 
-    abstract void printArea(); 
-}
-
-
+// Rectangle class
 class Rectangle extends Shape {
-    void input() {
-        System.out.print("Enter length of rectangle: ");
-        a = sc.nextInt();
-        System.out.print("Enter breadth of rectangle: ");
-        b = sc.nextInt();
+
+    Rectangle(int length, int breadth) {
+        dim1 = length;
+        dim2 = breadth;
     }
 
     void printArea() {
-        System.out.println("Area of Rectangle = " + (a * b));
+        int area = dim1 * dim2;
+        System.out.println("Area of Rectangle = " + area);
     }
 }
 
-
+// Triangle class
 class Triangle extends Shape {
-    void input() {
-        System.out.print("Enter base of triangle: ");
-        a = sc.nextInt();
-        System.out.print("Enter height of triangle: ");
-        b = sc.nextInt();
+
+    Triangle(int base, int height) {
+        dim1 = base;
+        dim2 = height;
     }
 
     void printArea() {
-        System.out.println("Area of Triangle = " + (0.5 * a * b));
+        double area = 0.5 * dim1 * dim2;
+        System.out.println("Area of Triangle = " + area);
     }
 }
 
-
+// Circle class
 class Circle extends Shape {
-    void input() {
-        System.out.print("Enter radius of circle: ");
-        a = sc.nextInt();
+
+    Circle(int radius) {
+        dim1 = radius;
     }
 
     void printArea() {
-        System.out.println("Area of Circle = " + (Math.PI * a * a));
+        double area = Math.PI * dim1 * dim1;
+        System.out.println("Area of Circle = " + area);
     }
 }
 
-
-public class ShapeDemo {
+// Main class
+class ShapeDemo {
     public static void main(String[] args) {
-   
-        Rectangle rect = new Rectangle();
-        Triangle tri = new Triangle();
-        Circle cir = new Circle();
 
-   
-        System.out.println("\n--- Rectangle ---");
-        rect.input();
-        rect.printArea();
+        Shape s;
 
-        System.out.println("\n--- Triangle ---");
-        tri.input();
-        tri.printArea();
+        s = new Rectangle(10, 5);
+        s.printArea();
 
-        System.out.println("\n--- Circle ---");
-        cir.input();
-        cir.printArea();
+        s = new Triangle(6, 4);
+        s.printArea();
+
+        s = new Circle(7);
+        s.printArea();
     }
 }
