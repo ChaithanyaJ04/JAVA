@@ -1,49 +1,42 @@
+import java.util.Scanner;
+
 abstract class Shape {
-
     int dim1, dim2;
-
-    // Abstract method
     abstract void printArea();
 }
 
-// Rectangle class
+// Rectangle
 class Rectangle extends Shape {
-
-    Rectangle(int length, int breadth) {
-        dim1 = length;
-        dim2 = breadth;
+    Rectangle(int l, int b) {
+        dim1 = l;
+        dim2 = b;
     }
 
     void printArea() {
-        int area = dim1 * dim2;
-        System.out.println("Area of Rectangle = " + area);
+        System.out.println("Area of Rectangle = " + (dim1 * dim2));
     }
 }
 
-// Triangle class
+// Triangle
 class Triangle extends Shape {
-
     Triangle(int base, int height) {
         dim1 = base;
         dim2 = height;
     }
 
     void printArea() {
-        double area = 0.5 * dim1 * dim2;
-        System.out.println("Area of Triangle = " + area);
+        System.out.println("Area of Triangle = " + (0.5 * dim1 * dim2));
     }
 }
 
-// Circle class
+// Circle
 class Circle extends Shape {
-
-    Circle(int radius) {
-        dim1 = radius;
+    Circle(int r) {
+        dim1 = r;
     }
 
     void printArea() {
-        double area = Math.PI * dim1 * dim1;
-        System.out.println("Area of Circle = " + area);
+        System.out.println("Area of Circle = " + (Math.PI * dim1 * dim1));
     }
 }
 
@@ -51,15 +44,31 @@ class Circle extends Shape {
 class ShapeDemo {
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
         Shape s;
 
-        s = new Rectangle(10, 5);
+        System.out.println("--- Rectangle ---");
+        System.out.print("Enter length of rectangle: ");
+        int l = sc.nextInt();
+        System.out.print("Enter breadth of rectangle: ");
+        int b = sc.nextInt();
+        s = new Rectangle(l, b);
         s.printArea();
 
-        s = new Triangle(6, 4);
+        System.out.println("\n--- Triangle ---");
+        System.out.print("Enter base of triangle: ");
+        int base = sc.nextInt();
+        System.out.print("Enter height of triangle: ");
+        int height = sc.nextInt();
+        s = new Triangle(base, height);
         s.printArea();
 
-        s = new Circle(7);
+        System.out.println("\n--- Circle ---");
+        System.out.print("Enter radius of circle: ");
+        int r = sc.nextInt();
+        s = new Circle(r);
         s.printArea();
     }
 }
+
+
